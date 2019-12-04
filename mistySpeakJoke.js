@@ -26,10 +26,10 @@ function _Bumped(data) {
     // sensor is touched.
     if (isPressed) {
         if (sensor == "Bump_FrontRight") {
-            misty.SendExternalRequest("GET", "https://official-joke-api.appspot.com/random_joke");
+            misty.SendExternalRequest("GET", "https://official-joke-api.appspot.com/random_joke"); // Get joke
         }
         else if (sensor == "Bump_FrontLeft") {
-            misty.SendExternalRequest("GET", "https://official-joke-api.appspot.com/random_joke");
+            misty.SendExternalRequest("GET", "https://official-joke-api.appspot.com/random_joke"); // Get Joke
         }
         else {
             misty.Debug("Sensor Name Unknown");
@@ -49,15 +49,14 @@ function _SendExternalRequest(data) {
     _jokePunchline = _data.punchline
     
     // combine into one line
-    _entireJoke = `<speak><prosody rate="90%"> ${_jokeSetup} <break time="1.5s"/> ${_jokePunchline}</prosody></speak>
-    `;
+    _entireJoke = `<speak><prosody rate="90%"> ${_jokeSetup} <break time="1s"/> ${_jokePunchline}</prosody></speak>`;
 
     var myText = {
         'text' : _entireJoke,
         'voice': 'Ivy'
     };
     
-    misty.SendExternalRequest("POST", "https://u127wlhnsj.execute-api.us-west-2.amazonaws.com/dev/speak",null,null,JSON.stringify(myText), false, false, null, null, "_awsGetSound");
+    misty.SendExternalRequest("POST", "https://<your_url>.execute-api.<your_region>.amazonaws.com/dev/speak",null,null,JSON.stringify(myText), false, false, null, null, "_awsGetSound");
 
 }
 
