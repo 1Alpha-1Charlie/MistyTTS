@@ -3,7 +3,7 @@ misty.ChangeLED(140, 0, 220); //Set LED purple
 misty.MoveArms(90, 90, null, null, 2, ""); //Set arms initially down
 misty.DisplayImage("e_DefaultContent.jpg", 1); // Default eyes
 misty.MoveHeadDegrees(0,0,0,90); //move head straight ahead
-misty.Pause(2500);
+misty.Pause(2500); // time for head to get to position
 
 
 misty.PlayAudio("HearJoke.mp3"); //Misty asks if you want to hear a joke
@@ -22,8 +22,7 @@ function _Bumped(data) {
 
     isPressed ? misty.Debug(sensor+" is Pressed") : misty.Debug(sensor+" is Released");
 
-    // If isPressed is true, plays a different sound depending which
-    // sensor is touched.
+    // Only using front bump sensors
     if (isPressed) {
         if (sensor == "Bump_FrontRight") {
             misty.SendExternalRequest("GET", "https://official-joke-api.appspot.com/random_joke"); // Get joke
@@ -49,7 +48,7 @@ function _SendExternalRequest(data) {
     _jokePunchline = _data.punchline
     
     // combine into one line
-    _entireJoke = `<speak><prosody rate="90%"> ${_jokeSetup} <break time="1s"/> ${_jokePunchline}</prosody></speak>`;
+    _entireJoke = `<speak><prosody rate="90%"> ${_jokeSetup}, ${_jokePunchline}</prosody></speak>`;
 
     var myText = {
         'text' : _entireJoke,
