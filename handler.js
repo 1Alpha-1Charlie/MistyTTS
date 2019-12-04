@@ -19,18 +19,9 @@ module.exports.speak = (event, context, callback) => {
     .on("success", function (response) {
       let data = response.data;
       let audioStream = data.AudioStream;
-      let buffersize = audioStream.length;
       let base64audio = audioStream.toString('base64');
-      let base64size = base64audio.length;
 
-      let result = {
-        // key: key,
-        next: 'None',
-        streamsize: buffersize,
-        base64var: base64size,
-        say: base64audio
-
-      };
+      let result = {say: base64audio};
       callback(null, {
         statusCode: 200, 
         body: JSON.stringify(result)
