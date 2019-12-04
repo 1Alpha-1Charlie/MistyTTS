@@ -47,7 +47,7 @@ function _SendExternalRequest(data) {
     //put the joke punchline in an punchline variable
     _jokePunchline = _data.punchline
     
-    // combine into one line
+    // combine into one line. TextType: "ssml"
     _entireJoke = `<speak><prosody rate="90%"> ${_jokeSetup}, ${_jokePunchline}</prosody></speak>`;
 
     var myText = {
