@@ -55,7 +55,7 @@ function _SendExternalRequest(data) {
         'voice': 'Ivy'
     };
     
-    misty.SendExternalRequest("POST", "https://<your_url>.execute-api.<your_region>.amazonaws.com/dev/speak",null,null,JSON.stringify(myText), false, false, null, null, "_awsGetSound");
+    misty.SendExternalRequest("POST", "https://<your_url>.execute-api.<your_region>.amazonaws.com/dev/<your function name>",null,null,JSON.stringify(myText), false, false, null, null, "_awsGetSound");
 
 }
 
